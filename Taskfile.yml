@@ -1,0 +1,14 @@
+# https://taskfile.dev
+
+version: '2'
+
+vars:
+  TEMPLATE_VERSION: '1.0.0'
+  VERSION: '{{.VERSION}}'
+tasks:
+  default:
+    cmds:
+      - echo "{{.TEMPLATE_VERSION}}"
+  build:
+    cmds:
+      - go build -o {{.PWD}}/build/{{.VERSION}}/hba -ldflags "-X main.VERSION={{.VERSION}}"
